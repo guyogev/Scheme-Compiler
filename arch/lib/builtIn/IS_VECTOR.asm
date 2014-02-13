@@ -1,0 +1,26 @@
+IS_VECTOR:
+    PUSH(IMM(3));
+    CALL(MALLOC);
+    DROP(1);
+    MOV(IND(R0), T_CLOSURE);
+    MOV(INDD(R0,1),10012);
+    MOV(INDD(R0,2),LABEL(IS_VECTOR_CODE));
+    JUMP(IS_VECTOR_EXIT);
+    
+IS_VECTOR_CODE:
+//  printf("### in label: IS_VECTOR_CODE \n");
+//  printf("Arg = %lu\n",STARG(2));
+    MOV(R0,STARG(2));
+    PUSH(IMM(R0));
+    CALL(IS_SOB_VECTOR);
+    DROP(1);
+    CMP(R0, IMM(0));
+    JUMP_EQ(IS_VECTOR_FALSE);
+    MOV(R0, IMM(SOB_TRUE));
+    JUMP(IS_VECTOR_EXIT);
+
+IS_VECTOR_FALSE:
+    MOV(R0, IMM(SOB_FALSE));
+
+IS_VECTOR_EXIT:
+    RETURN;

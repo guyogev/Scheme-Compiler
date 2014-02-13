@@ -1,0 +1,53 @@
+IS_ZERO_INT_FRAC:
+    PUSH(IMM(3));
+    CALL(MALLOC);
+    DROP(1);
+    MOV(IND(R0), T_CLOSURE);
+    MOV(INDD(R0,1),10010);
+    MOV(INDD(R0,2),LABEL(IS_ZERO_INT_FRAC_CODE));
+    JUMP(IS_ZERO_INT_FRAC_EXIT);
+    
+IS_ZERO_INT_FRAC_CODE:
+    PUSH(FP);
+    MOV(FP,SP);
+    /*
+    for (i=0; i<10; i++){
+        printf("FPARG(%ld) = %ld\n",i,FPARG(i));
+    }
+    */
+    PUSH(R1);
+//  check type    
+    MOV(R1,FPARG(2));
+    PUSH(R1);
+    CALL(IS_SOB_FRACTION);
+    DROP(1);
+    CMP(R0, IMM(1));
+    JUMP_EQ(IS_ZERO_INT_FRAC_CODE_CASE_FRAC);
+
+IS_ZERO_INT_FRAC_CODE_CASE_INT:
+//    printf("IS_ZERO_INT_FRAC_CODE_CASE_INT\n");
+    MOV(R1, INDD(R1,1));
+    CMP(R1, IMM(0));
+    JUMP_EQ(IS_ZERO_INT_FRAC_TRUE);
+    JUMP(IS_ZERO_INT_FRAC_FALSE);
+    
+IS_ZERO_INT_FRAC_CODE_CASE_FRAC:
+//    printf("IS_ZERO_INT_FRAC_CODE_CASE_FRAC\n");
+    MOV(R1, INDD(R1,1));
+    JUMP(IS_ZERO_INT_FRAC_CODE_CASE_INT);
+    
+IS_ZERO_INT_FRAC_TRUE:
+//    printf("IS_ZERO_INT_FRAC_TRUE\n");
+    MOV(R0, IMM(SOB_TRUE));
+    JUMP(IS_ZERO_INT_FRAC_CLEAR_AND_EXIT);
+
+IS_ZERO_INT_FRAC_FALSE:
+//    printf("IS_ZERO_INT_FRAC_FALSE\n");
+    MOV(R0, IMM(SOB_FALSE));
+
+IS_ZERO_INT_FRAC_CLEAR_AND_EXIT:
+    POP(R1);
+    POP(FP);
+    
+IS_ZERO_INT_FRAC_EXIT:
+    RETURN;

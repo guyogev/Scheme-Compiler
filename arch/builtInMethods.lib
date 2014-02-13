@@ -1,0 +1,48 @@
+#include "lib/builtIn/IS_BOOL.asm"          //10001
+#include "lib/builtIn/IS_NULL.asm"          //10002
+#include "lib/builtIn/IS_INT.asm"           //10003
+#include "lib/builtIn/IS_FRACTION.asm"      //10004
+#include "lib/builtIn/IS_NUMBER.asm"        //10005
+#include "lib/builtIn/IS_STRING.asm"        //10006
+#include "lib/builtIn/IS_CHAR.asm"          //10007
+#include "lib/builtIn/IS_PAIR.asm"          //10008
+#include "lib/builtIn/IS_SYMBOL.asm"        //10009
+#include "lib/builtIn/IS_ZERO_INT_FRAC.asm" //10010
+#include "lib/builtIn/IS_PROCEDURE.asm"     //10011
+#include "lib/builtIn/IS_VECTOR.asm"        //10012
+#include "lib/builtIn/IS_EQ.asm"            //10013
+
+#include "lib/builtIn/EQ_VARIADIC.asm"      //20000
+#include "lib/builtIn/LT_VARIADIC.asm"      //20001
+#include "lib/builtIn/GT_VARIADIC.asm"      //20002
+#include "lib/builtIn/PLUS_VARIADIC.asm"    //20003
+#include "lib/builtIn/MINUS_VARIADIC.asm"   //20004
+#include "lib/builtIn/MUL_VARIADIC.asm"     //20005
+#include "lib/builtIn/DIV_VARIADIC.asm"     //20006
+
+#include "lib/builtIn/LIST_VARIADIC.asm"    //30000
+#include "lib/builtIn/CAR.asm"              //30001
+#include "lib/builtIn/CDR.asm"              //30002
+#include "lib/builtIn/CONS.asm"             //30003
+
+#include "lib/builtIn/CHAR_TO_INTEGER.asm"  //40000
+#include "lib/builtIn/INTEGER_TO_CHAR.asm"  //40001
+
+#include "lib/builtIn/STRING_LENGTH.asm"    //50000
+#include "lib/builtIn/MAKE_STRING.asm"      //50001
+#include "lib/builtIn/STRING_REF.asm"       //50002
+#include "lib/builtIn/SYMBOL_TO_STRING.asm" //50003
+#include "lib/builtIn/STRING_TO_SYMBOL.asm" //50004
+
+#include "lib/builtIn/VECTOR.asm"           //60000
+#include "lib/builtIn/VECTOR_LENGTH.asm"    //60001
+#include "lib/builtIn/VECTOR_REF.asm"       //60002
+#include "lib/builtIn/MAKE_VECTOR.asm"      //60003
+
+#include "lib/builtIn/REMAINDER.asm"        //70000
+
+#include "lib/builtIn/APPEND.asm"           //80000
+
+#include "lib/builtIn/APPLY.asm"            //90000
+
+#include "lib/builtIn/MAP2.asm"
