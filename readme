@@ -1,0 +1,37 @@
+Scheme-Compiler
+===============
+Compiles a Chez scm file to CISC asm file.
+The scm file syntax must be valid. syntax error will cause a crash.
+
+A. About the compilation process:
+-----------------------
+    the program is a 4 stage process 
+    1.  read the input file, parse it into AST with syntax-labeled(tagged) nodes.
+    2.  the AST is analyzed syntactically, resulting a new AST with richer tag labels.
+    3.  the AST scanned for user defined constants and symbols.
+    3.  generate asm code of AST. 
+    
+B. Instructions:
+----------------    
+Compiling a Scheme file:
+1.  download the project
+2.  from the directory, run: python3 -i compiler.py
+3.  from the prompt, compile_scheme_file("input", "output.asm").
+    "input" is the Scheme file name.
+    "output" is the desired output file name.
+    
+if compilation was successful, a file output.asm is created.
+in order to run the output file you'll need GCC installed.
+
+1.  from the directory, run: make output.asm
+2.  run: ./output 
+
+C. Compiling the example input.scm file:
+----------------------------------------    
+In Order to compile the example file run the commands:
+1. python3 -i compiler.py
+2. compile_scheme_file("input.scm", "output.asm")
+3. make output
+4. ./output
+
+
